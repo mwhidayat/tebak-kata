@@ -50,7 +50,7 @@ def calculate_total_score(words):
     # Calculate total score for all words
     return sum(calculate_word_score(word) for word in words)
 
-def display_letters(letters):
+def display_letters(letters, word_list):
     center_letter = letters[0]
     other_letters = letters[1:]
 
@@ -63,7 +63,7 @@ def display_letters(letters):
 
     .hexagon {{
         display: inline-block;
-        margin: 2px;
+        margin: 10px;
         width: 30px;
         height: 30px;
         border: 1px solid #000;
@@ -93,7 +93,14 @@ def display_letters(letters):
     </div>
     """
 
+    valid_words = get_valid_words(letters, word_list)
+    num_valid_words = len(valid_words)
+
     st.markdown(html, unsafe_allow_html=True)
+
+    st.markdown("---")
+
+    st.info(f"Jumlah kata untuk ditebak: {num_valid_words} kata")
 
 # Streamlit app
 def main():
@@ -109,7 +116,7 @@ def main():
 
     st.markdown("---")
 
-    display_letters(letters)
+    display_letters(letters, word_list)
 
     st.write(" ")
     st.write(" ")
@@ -150,12 +157,31 @@ def main():
 
         st.info(f"Daftar kata telah ditebak: {', '.join(guessed_words)}")
 
-        information = f"Saya menebak {num_correct_guesses} kata dengan skor total {score} di aplikasi Tebak kata!"
+        valid_words = get_valid_words(letters, word_list)
+        num_valid_words = len(valid_words)
+
+        information = f"Saya menebak {num_correct_guesses} dari {num_valid_words} kata dengan skor total {score} di aplikasi Tebak kata!"
         twitter_url = "https://twitter.com/intent/tweet?text=" + urllib.parse.quote(information + " di sini: https://mwhidayat-tebak-kata-app-r88f9n.streamlit.app/")
         st.write(f"[Share on Twitter]({twitter_url})")
 
-        
-    # Footer with your name
+
+    st.markdown("---")
+
+    if "give_up_clicked" not in st.session_state:
+        st.session_state["give_up_clicked"] = False
+
+    give_up_clicked = st.session_state["give_up_clicked"]
+
+    # Give up button
+    if not give_up_clicked:
+        if st.button("Menyerah"):
+            st.session_state["give_up_clicked"] = True
+            give_up_clicked = True
+    else:
+        valid_words = get_valid_words(letters, word_list)
+        st.info(f"Kunci jawaban: {', '.join(valid_words)}")
+
+    # Footer
     with st.container():
         st.markdown("---")
         st.markdown("Initially developed by [MW Hidayat](https://twitter.com/casecrit) to help a first grader learning new words. Inspired by The NYT's Spelling Bee.")
