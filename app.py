@@ -150,7 +150,7 @@ def main():
     # Footer with your name
     with st.container():
         st.markdown("---")
-        st.markdown("Developed by MW Hidayat. Find me on [Twitter](https://twitter.com/casecrit)")
+        st.markdown("Developed by MW Hidayat to help his first grader learning new words. Inspired by The NYT's Spelling Bee. Find me on [Twitter](https://twitter.com/casecrit)")
 
 
 if __name__ == "__main__":
