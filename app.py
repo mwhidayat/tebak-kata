@@ -111,7 +111,8 @@ def main():
     # Add a button that shuffles the order of the letters
 
     display_letters(letters)
-
+    st.text(" ")
+    st.text(" ")
     if st.button("Ubah susunan huruf"):
         random.shuffle(letters)
         st.session_state["letters"] = letters
