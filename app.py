@@ -160,8 +160,8 @@ def main():
         valid_words = get_valid_words(letters, word_list)
         num_valid_words = len(valid_words)
 
-        information = f"Saya menebak {num_correct_guesses} dari {num_valid_words} kata dengan skor total {score} di aplikasi Tebak kata"
-        twitter_url = "https://twitter.com/intent/tweet?text=" + urllib.parse.quote(information + " di sini: https://mwhidayat-tebak-kata-app-r88f9n.streamlit.app/")
+        information = f"Saya menebak {num_correct_guesses} dari {num_valid_words} kata dengan skor total {score} di permainan Tebak Kata"
+        twitter_url = "https://twitter.com/intent/tweet?text=" + urllib.parse.quote(information + ": https://mwhidayat-tebak-kata-app-r88f9n.streamlit.app/")
         st.write(f"[Share on Twitter]({twitter_url})")
 
 
@@ -179,8 +179,8 @@ def main():
             give_up_clicked = True
     else:
         valid_words = get_valid_words(letters, word_list)
-        valid_words_with_url = [f"[{word}](https://kbbi.kemdikbud.go.id/entri/{word})?utm=tebak-kata-mwhidayat" for word in valid_words]
-        st.info(f"Kunci jawaban: {', '.join(valid_words_with_url)}. Klik pada kata tersebut untuk mengetahui maknanya di KBBI,")
+        valid_words_with_url = [f"[{word}](https://kbbi.kemdikbud.go.id/entri/{word})" for word in valid_words]
+        st.info(f"Kunci jawaban: {', '.join(valid_words_with_url)}. Klik pada kata tersebut untuk mengetahui maknanya di KBBI.")
 
     # Footer
     with st.container():
