@@ -151,7 +151,7 @@ def main():
         st.info(f"Daftar kata telah ditebak: {', '.join(guessed_words)}")
 
         information = f"Saya menebak {num_correct_guesses} kata dengan skor total {score} di aplikasi Tebak kata!"
-        twitter_url = "https://twitter.com/intent/tweet?text=" + urllib.parse.quote(information + "\n\nTebak kata di sini: https://mwhidayat-tebak-kata-app-r88f9n.streamlit.app/")
+        twitter_url = "https://twitter.com/intent/tweet?text=" + urllib.parse.quote(information + " di sini: https://mwhidayat-tebak-kata-app-r88f9n.streamlit.app/")
         st.write(f"[Share on Twitter]({twitter_url})")
 
         
