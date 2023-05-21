@@ -1,6 +1,7 @@
 import streamlit as st
 import random
 import datetime
+import urllib
 
 # Read words from a txt file
 def read_word_list():
@@ -108,21 +109,19 @@ def main():
 
     st.markdown("---")
 
-    # Add a button that shuffles the order of the letters
-
     display_letters(letters)
-    st.text(" ")
-    st.text(" ")
+
+    st.write(" ")
+    st.write(" ")
+
     if st.button("Ubah susunan huruf"):
         random.shuffle(letters)
         st.session_state["letters"] = letters
 
     st.markdown("---")
 
-    user_input = st.text_input("Kata tebakanmu:")
+    user_input = st.text_input("Kata tebakanmu:").lower()
     if user_input:
-        user_input = user_input.lower()  # convert input to lowercase
-
         guessed_words = st.session_state.get("guessed_words", [])
         score = st.session_state.get("score", 0)
 
@@ -138,24 +137,28 @@ def main():
                 word_score = calculate_word_score(user_input)
                 score += word_score
                 st.session_state["score"] = score
-                st.write(" ")
                 st.info(f"Skor kata: {word_score}")
 
             else:
                 st.error("Ups, salah!")
 
-            st.write(" ")
             st.info(f"Skor total: {calculate_total_score(guessed_words)}")
             st.session_state["guessed_words"] = guessed_words
 
-        st.write(" ")
+        num_correct_guesses = len(guessed_words)
+        st.info(f"Jumlah tebakan benar: {num_correct_guesses}")
+
         st.info(f"Daftar kata telah ditebak: {', '.join(guessed_words)}")
+
+        information = f"Saya menebak {num_correct_guesses} kata dengan skor total {score} di aplikasi Tebak kata!"
+        twitter_url = "https://twitter.com/intent/tweet?text=" + urllib.parse.quote(information + "\n\nTebak kata di sini: https://mwhidayat-tebak-kata-app-r88f9n.streamlit.app/")
+        st.write(f"[Share on Twitter]({twitter_url})")
+
         
     # Footer with your name
     with st.container():
         st.markdown("---")
         st.markdown("Initially developed by [MW Hidayat](https://twitter.com/casecrit) to help a first grader learning new words. Inspired by The NYT's Spelling Bee.")
-
 
 if __name__ == "__main__":
     st.set_page_config(
