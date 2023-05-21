@@ -68,11 +68,12 @@ def display_letters(letters):
         border: 1px solid #000;
         line-height: 30px;
         font-size: 20px;
-        background-color: #fff;
+        background-color: #FFAE42;
+        color: #000;
     }}
 
     .hexagon.center {{
-        background-color: #fff;
+        background-color: #FFAE42;
     }}
     </style>
 
@@ -111,7 +112,7 @@ def main():
 
     display_letters(letters)
 
-    if st.button("Acak susunan huruf"):
+    if st.button("Ubah susunan huruf"):
         random.shuffle(letters)
         st.session_state["letters"] = letters
 
@@ -119,6 +120,8 @@ def main():
 
     user_input = st.text_input("Kata tebakanmu:")
     if user_input:
+        user_input = user_input.lower()  # convert input to lowercase
+
         guessed_words = st.session_state.get("guessed_words", [])
         score = st.session_state.get("score", 0)
 
