@@ -146,6 +146,12 @@ def main():
 
         st.write(" ")
         st.info(f"Daftar kata telah ditebak: {', '.join(guessed_words)}")
+        
+    # Footer with your name
+    with st.container():
+        st.markdown("---")
+        st.markdown("Developed by MW Hidayat. Find me on [Twitter](https://twitter.com/casecrit)")
+
 
 if __name__ == "__main__":
     st.set_page_config(
