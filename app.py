@@ -149,6 +149,12 @@ def main():
 
         st.write(" ")
         st.info(f"Daftar kata telah ditebak: {', '.join(guessed_words)}")
+        
+    # Footer with your name
+    with st.container():
+        st.markdown("---")
+        st.markdown("Initially developed by [MW Hidayat](https://twitter.com/casecrit) to help a first grader learning new words. Inspired by The NYT's Spelling Bee.")
+
 
 if __name__ == "__main__":
     st.set_page_config(
