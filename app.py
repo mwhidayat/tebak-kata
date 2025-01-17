@@ -93,11 +93,15 @@ def main():
     with st.expander("Kata tebakanmu:", expanded=True):
         user_input = st.text_input("", st.session_state["user_input"], key="user_input_field")
 
-        if st.button("Kirim"):
-            process_user_input(user_input, letters, word_list)
+        col1, col2 = st.columns(2)
 
-        # Clear input field if desired, otherwise leave it as is
-        # st.session_state["user_input"] = ""  
+        with col1:
+            if st.button("Periksa"):
+                process_user_input(user_input, letters, word_list)
+
+        with col2:
+            if st.button("Hapus"):
+                st.session_state["user_input"] = ""
 
     display_statistics()
 
