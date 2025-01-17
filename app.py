@@ -130,7 +130,8 @@ def main():
 
     with st.container():
         st.markdown("---")
-        st.markdown("Originally developed by [MW Hidayat](https://github.com/mwhidayat/) to help a first grader acquire new words. Inspired by The NYT's Spelling Bee.")
+        st.markdown("Initially developed by [MW Hidayat](https://github.com/mwhidayat/) to help a first grader acquire new words.")
+        st.markdown("Inspired by The NYT's Spelling Bee.")
 
 if __name__ == "__main__":
     st.set_page_config(
