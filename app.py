@@ -131,6 +131,7 @@ def main():
             st.info(f"Jumlah kata untuk ditebak: {num_valid_words} kata")
         with col2:
             st.info(f"Daftar kata telah ditebak: {', '.join(guessed_words)}")
+            guessed_words = st.session_state["guessed_words"]
             st.info(f"Jumlah tebakan benar: {len(guessed_words)}")
 
         if st.button("Menyerah"):
