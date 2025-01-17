@@ -46,20 +46,18 @@ def calculate_total_score(words):
 
 # Function to display the letters in a 3x2 grid
 def display_letters(letters):
-    st.markdown("### Susunan Huruf")
-    rows = [letters[i:i+3] for i in range(0, len(letters), 3)]
+    with st.expander("Daftar huruf hari ini", expanded=True):
+        rows = [letters[i:i+3] for i in range(0, len(letters), 3)]
 
-    # Only keep the first 2 rows for the 3x2 grid
-    rows = rows[:2]
+        # Only keep the first 2 rows for the 3x2 grid
+        rows = rows[:2]
 
-    for row in rows:
-        cols = st.columns(3)
-        for idx, letter in enumerate(row):
-            with cols[idx]:
-                if st.button(letter.upper(), key=letter):
-                    st.session_state["user_input"] += letter
-
-    st.markdown("---")
+        for row in rows:
+            cols = st.columns(3)
+            for idx, letter in enumerate(row):
+                with cols[idx]:
+                    if st.button(letter.upper(), key=letter):
+                        st.session_state["user_input"] += letter
 
 # Main function to run the application
 def main():
@@ -83,56 +81,55 @@ def main():
 
     display_letters(letters)
 
-    user_input = st.text_input("Kata tebakanmu:", st.session_state["user_input"]).lower()
+    with st.expander("Kata tebakanmu:", expanded=True):
+        user_input = st.text_input("", st.session_state["user_input"]).lower()
 
-    if st.button("Kirim"):
-        if user_input:
-            guessed_words = st.session_state["guessed_words"]
-            score = st.session_state["score"]
+        if st.button("Kirim"):
+            if user_input:
+                guessed_words = st.session_state["guessed_words"]
+                score = st.session_state["score"]
 
-            if user_input in guessed_words:
-                st.warning("Kata telah ditebak. Coba kata lain.")
-            else:
-                valid_words = get_valid_words(letters, word_list)
-
-                if user_input in valid_words:
-                    st.success("Betul!")
-                    guessed_words.append(user_input)
-
-                    word_score = calculate_word_score(user_input)
-                    score += word_score
-                    st.session_state["score"] = score
-                    st.info(f"Skor kata: {word_score}")
+                if user_input in guessed_words:
+                    st.warning("Kata telah ditebak. Coba kata lain.")
                 else:
-                    st.error("Ups, salah!")
+                    valid_words = get_valid_words(letters, word_list)
 
-                st.session_state["guessed_words"] = guessed_words
+                    if user_input in valid_words:
+                        st.success("Betul!")
+                        guessed_words.append(user_input)
 
-        st.session_state["user_input"] = ""  # Clear input field
+                        word_score = calculate_word_score(user_input)
+                        score += word_score
+                        st.session_state["score"] = score
+                        st.info(f"Skor kata: {word_score}")
+                    else:
+                        st.error("Ups, salah!")
 
-    st.markdown("---")
+                    st.session_state["guessed_words"] = guessed_words
 
-    guessed_words = st.session_state["guessed_words"]
-    score = st.session_state["score"]
+            st.session_state["user_input"] = ""  # Clear input field
+
+        guessed_words = st.session_state["guessed_words"]
+        score = st.session_state["score"]
 
     # Create two columns for displaying information
-    col1, col2 = st.columns(2)
+    with st.expander("Statistik", expanded=True):
+        col1, col2 = st.columns(2)
 
-    with col1:
-        st.info(f"Skor total: {score}")
-        st.info(f"Jumlah tebakan benar: {len(guessed_words)}")
+        with col1:
+            st.info(f"Skor total: {score}")
+            st.info(f"Jumlah tebakan benar: {len(guessed_words)}")
 
-    with col2:
-        st.info(f"Daftar kata telah ditebak: {', '.join(guessed_words)}")
-        valid_words = get_valid_words(letters, word_list)
-        num_valid_words = len(valid_words)
-        st.info(f"Jumlah kata untuk ditebak: {num_valid_words} kata")
+        with col2:
+            st.info(f"Daftar kata telah ditebak: {', '.join(guessed_words)}")
+            valid_words = get_valid_words(letters, word_list)
+            num_valid_words = len(valid_words)
+            st.info(f"Jumlah kata untuk ditebak: {num_valid_words} kata")
 
-    if st.button("Menyerah"):
-        st.info(f"Kunci jawaban: {', '.join(valid_words)}")
+        if st.button("Menyerah"):
+            st.info(f"Kunci jawaban: {', '.join(valid_words)}")
 
     with st.container():
-        st.markdown("---")
         st.markdown("Initially developed by [MW Hidayat](https://github.com/mwhidayat/) to help a first grader acquire new words.")
         st.markdown("Inspired by The NYT's Spelling Bee.")
 
