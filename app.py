@@ -12,8 +12,8 @@ def read_word_list():
 # Function to generate a random set of 9 letters
 def generate_letters():
     vowels = ["a", "e", "i", "o", "u"]
-    num_vowels = 3
-    num_consonants = 9 - num_vowels
+    num_vowels = 2
+    num_consonants = 6 - num_vowels
 
     today = datetime.date.today()
     seed = int(today.strftime("%Y%m%d"))
@@ -44,10 +44,13 @@ def calculate_word_score(word):
 def calculate_total_score(words):
     return sum(calculate_word_score(word) for word in words)
 
-# Function to display the letters in a 3x3 grid
+# Function to display the letters in a 3x2 grid
 def display_letters(letters):
     st.markdown("### Susunan Huruf")
     rows = [letters[i:i+3] for i in range(0, len(letters), 3)]
+
+    # Only keep the first 2 rows for the 3x2 grid
+    rows = rows[:2]
 
     for row in rows:
         cols = st.columns(3)
@@ -130,7 +133,8 @@ def main():
 
     with st.container():
         st.markdown("---")
-        st.markdown("Originally developed by [MW Hidayat](https://github.com/mwhidayat/) to help a first grader acquire new words. Inspired by The NYT's Spelling Bee.")
+        st.markdown("Initially developed by [MW Hidayat](https://github.com/mwhidayat/) to help a first grader acquire new words.")
+        st.markdown("Inspired by The NYT's Spelling Bee.")
 
 if __name__ == "__main__":
     st.set_page_config(
