@@ -44,20 +44,28 @@ def calculate_word_score(word):
 def calculate_total_score(words):
     return sum(calculate_word_score(word) for word in words)
 
-# Function to display the letters in a 3x2 grid
+# Function to display the letters in a 2x3 grid
 def display_letters(letters):
     with st.expander("Daftar huruf hari ini", expanded=True):
-        rows = [letters[i:i+3] for i in range(0, len(letters), 3)]
-
-        # Only keep the first 2 rows for the 3x2 grid
-        rows = rows[:2]
-
+        rows = [letters[i:i+2] for i in range(0, len(letters), 2)]
+        
+        # Only keep the first 3 rows for the 2x3 grid
+        rows = rows[:3]
+        
         for row in rows:
-            cols = st.columns(3)
+            cols = st.columns([5, 1])  # Adjust column sizes if necessary
             for idx, letter in enumerate(row):
                 with cols[idx]:
-                    if st.button(letter.upper(), key=letter):
-                        st.session_state["user_input"] += letter
+                    st.button(letter.upper(), key=letter)
+
+        # CSS to force responsive grid on mobile
+        st.markdown("""<style>
+                        [data-testid="column"] {
+                            width: calc(50% - 1rem) !important;
+                            flex: 1 1 calc(50% - 1rem) !important;
+                            min-width: calc(50% - 1rem) !important;
+                        }
+                     </style>""", unsafe_allow_html=True)
 
 # Main function to run the application
 def main():
@@ -118,13 +126,12 @@ def main():
 
         with col1:
             st.info(f"Skor total: {score}")
-            st.info(f"Jumlah tebakan benar: {len(guessed_words)}")
-
-        with col2:
-            st.info(f"Daftar kata telah ditebak: {', '.join(guessed_words)}")
             valid_words = get_valid_words(letters, word_list)
             num_valid_words = len(valid_words)
             st.info(f"Jumlah kata untuk ditebak: {num_valid_words} kata")
+        with col2:
+            st.info(f"Daftar kata telah ditebak: {', '.join(guessed_words)}")
+            st.info(f"Jumlah tebakan benar: {len(guessed_words)}")
 
         if st.button("Menyerah"):
             st.info(f"Kunci jawaban: {', '.join(valid_words)}")
