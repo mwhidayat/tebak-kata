@@ -243,7 +243,6 @@ adverbia
 adverbial
 advertensi
 advis
-advokad
 advokasi
 advokat
 aerasi
@@ -29929,4 +29928,5 @@ zulmat
 zulu
 zurafah
 zuriah
+
 zus
