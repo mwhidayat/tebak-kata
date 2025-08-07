@@ -1,19 +1,19 @@
 # 🔡 Tebak Kata
 
-**Tebak Kata** is a daily Indonesian word puzzle game inspired by *The New York Times Spelling Bee*. Your goal is to find as many valid Indonesian words as possible using a set of 9 letters — with one mandatory **center letter** that must be included in every guess.
+**Tebak Kata** is a daily Indonesian word puzzle game inspired by *The New York Times Spelling Bee*. Your goal is to find as many valid Indonesian words as possible using a set of 9 letters with one mandatory **center letter** that must be included in every guess.
 
 Built with [Streamlit](https://streamlit.io), this app is designed to make vocabulary building fun and interactive for Bahasa Indonesia learners and native speakers alike.
 
-## ✨ Features
+## Features
 
-- 🔁 **Daily challenge**: Letters are randomized based on the current date.
-- 🟢 **Center letter**: All valid guesses must contain this required letter.
-- 🧠 **Real word list validation** using a dictionary file (`id-word-list.txt`).
-- 📝 **Scoring system**: Points awarded based on word length.
-- 🔀 **Shuffle letters** to see new word possibilities.
-- 😓 **Give up option**: Reveals all possible answers with links to [KBBI](https://kbbi.kemdikbud.go.id).
+- **Daily challenge**: Letters are randomized based on the current date.
+- **Center letter**: All valid guesses must contain this required letter.
+- **Real Word List Validation**: This uses a dictionary file (`id-word-list.txt`) to verify actual words. The list has been simplified specifically for this project. The original source will be added once I recall it.
+- **Scoring system**: Points awarded based on word length.
+- **Shuffle letters** to see new word possibilities.
+- **Give up option**: Reveals all possible answers with links to [KBBI](https://kbbi.web.id).
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 
@@ -24,7 +24,7 @@ Built with [Streamlit](https://streamlit.io), this app is designed to make vocab
 
 ````
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 
@@ -72,28 +72,28 @@ rumah
 ...
 ```
 
-## 📸 Screenshot
+## Screenshot
 
-<img width="670" height="839" alt="image" src="https://github.com/user-attachments/assets/2a523a62-4eaa-498e-9713-a989fbf4c5ce" />
+<img width="612" height="860" alt="image" src="https://github.com/user-attachments/assets/8c177f01-66bd-43b1-ac1c-26bc374509d8" />
 
-
-## 🧠 Inspired By
+## Inspired By
 
 This project is inspired by the [NYT Spelling Bee](https://www.nytimes.com/puzzles/spelling-bee), adapted for Bahasa Indonesia to support language learning and vocabulary enrichment through play.
 
-## 👨‍💻 Author
+## Author
 
 Developed by [MW Hidayat](https://github.com/mwhidayat)
 
-## 📄 License
+## License
 
 This project is licensed under the **MIT License**.
 You are free to use, modify, and distribute it.
 
-## 🤝 Contributing
+## Contributing
 
 Contributions and suggestions are welcome!
 Feel free to open an issue or submit a pull request.
+
 
 
 
