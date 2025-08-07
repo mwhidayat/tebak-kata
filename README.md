@@ -77,8 +77,6 @@ rumah
 <img width="670" height="839" alt="image" src="https://github.com/user-attachments/assets/2a523a62-4eaa-498e-9713-a989fbf4c5ce" />
 
 
-![Screenshot](assets/screenshot.png)
-
 ## 🧠 Inspired By
 
 This project is inspired by the [NYT Spelling Bee](https://www.nytimes.com/puzzles/spelling-bee), adapted for Bahasa Indonesia to support language learning and vocabulary enrichment through play.
@@ -96,5 +94,6 @@ You are free to use, modify, and distribute it.
 
 Contributions and suggestions are welcome!
 Feel free to open an issue or submit a pull request.
+
 
 
