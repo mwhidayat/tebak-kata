@@ -170,7 +170,7 @@ def main():
             st.session_state.give_up = True
             st.rerun()
     else:
-        kbbi_links = [f"[{word}](https://kbbi.kemdikbud.go.id/entri/{word})" for word in valid_words]
+        kbbi_links = [f"[{word}](https://kbbi.web.id/{word})" for word in valid_words]
         st.info("Jawaban lengkap: " + ", ".join(kbbi_links))
 
     # -- Footer --
@@ -179,4 +179,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
